@@ -7,7 +7,7 @@ const config: DocsThemeConfig = {
   project: {
     link: 'https://github.com/muyoungko/dab-document',
   },
-  docsRepositoryBase: 'https://github.com/muyoungko/dab-document',
+  docsRepositoryBase: 'https://github.com/muyoungko/dab-document/blob/master',
   footer: {
     text: <span>© 2024 Mondayless, Inc</span>,
   },

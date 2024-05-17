@@ -1,7 +1,8 @@
 {
   "index": "Introduction",
-  "another": "Another Page",
-  "advanced": "Advanced (A Folder)",
+  "mobileapp": "Mobile App",
+  "api": "API",
+  "admin": "Backend Admin",
   "about": {
     "title": "About",
     "type": "page"
