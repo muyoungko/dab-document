@@ -1,7 +1,12 @@
 {
-  "index": "Introduction",
+  "introduction": {
+    "title":"Introduction",
+    "items": {
+      "quickstart":"Q"
+    }
+  },
   "mobileapp": "Mobile App",
-  "api": "API",
+  "api": "Serverless API",
   "admin": "Backend Admin",
   "about": {
     "title": "About",

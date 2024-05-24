@@ -1,8 +1,8 @@
 {
     "development":"Development",
-    "sketch":"Sketch to App",
     "figma":"Figma to App",
+    "sketch":"Sketch to App",
     "screen":"Screen",
-    "distribution":"Distribution",
-    "jevil":"Jevil Reference"
+    "jevil":"Jevil Reference",
+    "distribution":"Distribution"
 }
