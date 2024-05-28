@@ -1,10 +1,78 @@
 # Quick Start
 
-We will make sample figma or Sketch and make simple get network 
+We will do 
+ - make sample sketch convert to application and make simple get network 
+ - get json data from http network call
+ - set text to UI node
 
-### Prepare Figma or Sketch
-and
-#### adfs
-#### adfs
+### Get Sample Sketch
 
-### 
+Get sample sketch from https://www.devil-app-builder.com/sketch
+ 
+![Hello](/image/quickstart1.png)
+
+- Upload the sample sketch then new project is constructed
+
+### Set Start Screen
+
+You can see 4 screens if you use sample sketch 
+Set the first screen to splash then it become first screen when you start application
+
+### View with Mobile app
+
+You can see the Qr code on the console.
+Watch your First Application with Devil App Builder Viewer
+
+### Go to Development IDE console
+
+ - Select your screen 
+
+### Use Http Api
+
+put following code on screen javascript. 
+Jevil is library for using native functions. 
+We support javascript only for process data. Almost everythings to do is in Jevil Library. 
+[See reference](/mobileapp/jevil/instroduction)
+
+#### Put code
+ ```js
+ Jevil.startLoading()
+ Jevil.getThen('https://api.mondayless.co.kr/member/hello', function(res) {
+    Jevil.stopLoading()
+    data.text = res.hello
+ })
+```
+
+- data is reserved variable
+
+Response json
+```json
+{
+  "hello": "member hello"
+}
+```
+
+- Now "member hello" is set to data.text variable
+
+#### Reload code
+
+Click devil icon on mobile application for reload new code
+
+
+### Put json text to UI node 
+
+#### Make block rule
+
+Go to screen set block rule
+
+#### Jevil.update()
+```js
+ Jevil.startLoading()
+ Jevil.getThen('https://api.mondayless.co.kr/member/hello', function(res) {
+    Jevil.stopLoading()
+    data.text = res.hello
+
+    // add following code
+    Jevil.update() // sync data variable to screen
+ })
+```
