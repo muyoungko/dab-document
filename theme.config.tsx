@@ -12,15 +12,6 @@ const config: DocsThemeConfig = {
     text: <span>© 2024 Mondayless, Inc</span>,
   },
   darkMode:true,
-  useNextSeoProps: () => {
-    const { asPath } = useRouter()
-    if (asPath === '/') {
-      return {
-        titleTemplate: 'Documentation - Devil App Builder'
-      }
-    }
-  },
-
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter()
     const url =
