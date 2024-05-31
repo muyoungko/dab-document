@@ -12,7 +12,7 @@ const config: DocsThemeConfig = {
     text: <span>© 2024 Mondayless, Inc</span>,
   },
   darkMode:true,
-  useNextSeoProps() {
+  useNextSeoProps: () => {
     const { asPath } = useRouter()
     if (asPath === '/') {
       return {
