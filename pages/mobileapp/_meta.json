@@ -1,4 +1,5 @@
 {
+    "host":"Network via http",
     "development":"Development",
     "figma":"Figma to App",
     "sketch":"Sketch to App",

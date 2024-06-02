@@ -2,8 +2,8 @@
   "index": "Hello",
   "introduction": "Introduction",
   "mobileapp": "Mobile App",
-  "api": "Front API",
-  "admin": "Admin Web",
+  "api": "API Builder",
+  "admin": "Admin Builder",
   "about": {
     "title": "About",
     "type": "page"
