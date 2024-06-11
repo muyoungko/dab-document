@@ -1,0 +1,153 @@
+
+## Jevil.alert
+
+Show alert message
+
+- Jevil.alert(message)
+
+parameter
+
+- `message` `string` `require` alert message
+
+```js filename="Example code"
+Jevil.alert('Hello Alert')
+```
+
+## Jevil.alertFinish
+
+Show alert message then current screen finish after click 'OK'
+
+- Jevil.alertFinish(message)
+
+parameter
+
+- `message` `string` `require` alert message
+
+
+```js filename="Example code"
+Jevil.alertFinish('Hello Alert')
+```
+
+
+
+
+## Jevil.alertThen
+
+Show alert message then function called after click 'OK'
+
+- Jevil.alertThen(message, callback)
+
+parameter
+- `message` `string` `require` alert message
+- `callback` `function` `require` 
+
+
+```js filename="Example code"
+Jevil.alertThen('Hello Alert', function(){
+    ...
+})
+```
+
+
+
+
+## Jevil.alertThenOption
+
+Show alert message then function called after click 'OK' with Option
+
+- Jevil.alertThenOption(option)
+
+parameter
+
+- `option` `json` `require` option
+    - `msg` `string` `require` alert message
+    - `yes` `string` `require` ok button text
+    - `cancelable` `boolean` `require` alert cancelable by android backbutton or background click
+
+
+```js filename="Example code"
+Jevil.alertThenOption({yes:'Complete', msg:msg}, function() {
+    //whatever
+    Jevil.finish()
+}) 
+```
+
+
+
+
+## Jevil.confirm
+
+It is confirm dialog with two button -Positive, Nagative-
+
+- Jevil.confirm(message, yes, no, callback)
+
+parameter
+
+- `message` `string` `require` 컨펌 메세지
+- `yes` `string` `require` Yes 버튼의 문구
+- `no` `string` `require` No 버튼의 문구
+- `callback` `function` `require` 
+    - `answer` `boolean` `require` Yes 버튼을 눌렀는지 여부
+
+
+```js filename="Example code"
+Jevil.confirm('Are you human?','Yes I am', 'No, I am not', function(answer){
+    if(answer){
+        ...
+    }
+})
+        
+```
+
+
+
+
+## Jevil.startLoading
+
+It is loading indicator showing center 
+It loading animation is default. 
+Also you can change it by [app appeareance](/mobileapp/appearance#loading-indicator)
+
+- Jevil.startLoading()
+
+```js filename="Example code"
+Jevil.startLoading()  
+```
+
+```js filename="Example code - combine with network request"
+Jevil.startLoading()
+Jevil.getThen('/member/hello', function(res) {
+    Jevil.stopLoading()
+})
+```
+
+
+
+## Jevil.stopLoading
+
+Close loading indicator
+
+- Jevil.stopLoading(null)
+
+```js filename="Example code"
+Jevil.stopLoading()
+```
+
+
+## Jevil.toast
+
+It is toast
+
+- Jevil.toast(message)
+
+parameter
+
+- `message` `string` `require` Toast Message
+
+
+```js filename="Example code"
+Jevil.toast('Hello Toast')
+```
+
+
+

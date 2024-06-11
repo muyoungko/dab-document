@@ -1,0 +1,334 @@
+
+## Jevil.focus
+
+Start Editing Text Input
+onResume 함수에서 사용해야함
+
+- Jevil.focus(node)
+
+parameter
+
+- node `string` `require` TextInput Node Name
+
+
+```js filename="Example code"
+Jevil.focus('TextInputNodeName')
+```
+
+
+
+
+## Jevil.getViewPagerSelectedIndex
+
+뷰페이저의 현재 인덱스를 가져온다
+
+- Jevil.getViewPagerSelectedIndex(node)
+
+parameter
+
+- node `string` `require` 뷰페이저 노드명
+
+
+```js filename="Example code"
+let index = Jevil.getViewPagerSelectedIndex('myViewPagerNodeName')
+            
+```
+
+
+
+
+## Jevil.hideKeyboard
+
+키보드를 내린다
+
+- Jevil.hideKeyboard(null)
+
+parameter
+null
+
+
+```js filename="Example code"
+Jevil.hideKeyboard()
+```
+
+
+
+
+## Jevil.resetTimer
+
+Reset Timer to begining
+
+- Jevil.resetTimer(node)
+
+parameter
+
+- node `string` `require` 타이머 노드명
+
+
+```js filename="Example code"
+let index = Jevil.resetTimer('myTimerNodeName')
+```
+
+
+
+
+## Jevil.scrollDragged
+
+스크롤이 멈췄을때 호출된다
+
+- Jevil.scrollDragged(node, callback)
+
+parameter
+
+- node `string` `require` 스크롤 노드 이름
+- callback `function` `require` 
+
+
+```js filename="Example code"
+Jevil.scrollDragged('list', function(){
+  //...
+})
+
+```
+
+
+
+
+## Jevil.scrollEnd
+
+스크롤되는 반복뷰(List, HList)의 스크롤에 마지막이 되면 함수가 콜된다
+
+- Jevil.scrollEnd(node, callback)
+
+parameter
+
+- node `string` `require` List node name 
+반복되는 아이템 말고 그 부모 노드 이름을 줘야한다
+- callback `function` `require` 
+
+
+```js filename="Example code"
+Jevil.scrollEnd('list', function(){
+  ... do something
+})
+```
+
+
+
+
+## Jevil.scrollTo
+
+리스트의 스크롤을 특정 인덱스로 이동한다
+해당 셀이 리스트의 최상단으로 올라간다
+셀을 아래 배치하고 싶으면 offset변수로 조절한다
+셀을 중앙으로 배치하거나 하단으로 배치하는 옵션은 추가 예정
+
+- Jevil.scrollTo(node, index, param)
+
+parameter
+
+- node `string` `require` 리스트 노드 
+- index `int` `require` 행인덱스
+- param `json` `optional` 스크롤 옵션
+  - offset `int` `optional` cell이 top을 기준으로 얼마나 아래로 이동하느냐
+  - animation `boolean` `optional` 스크롤 이동 애니메이션 여부 default - true
+
+
+
+```js filename="Example code"
+Jevil.scrollTo('list', index)
+
+Jevil.scrollTo('list', index, {animation:true})
+```
+
+
+
+
+## Jevil.scrollUp
+
+리스트를 최상단으로 스크롤한다
+
+- Jevil.scrollUp(node)
+
+parameter
+
+- node `string` `require` 리스트 노드명 
+null 이면 화면 리스트를 의미한다
+
+
+```js filename="Example code"
+Jevil.scrollUp(null)
+
+Jevil.scrollUp('list')
+```
+
+
+
+
+## Jevil.setText
+
+스캐치의 textNode의 텍스트를 바꾼다
+onResume함수에서 사용해야함
+
+- Jevil.setText(node, text)
+
+parameter
+
+- node `string` `require` 노드명
+- text `string` `require` 설정한 텍스트
+
+
+```js filename="Example code"
+Jevil.setText('textNode', 'hello')
+```
+
+
+
+
+## Jevil.setViewPagerSelectedIndex
+
+ViewPager의 index를 지정한다
+다음 Jevil.update()에서 반영된다
+
+- Jevil.setViewPagerSelectedIndex(nodeName, index)
+
+parameter
+
+- nodeName `string` `require` View Pager Node Name
+- index `int` `require` View Pager Index
+
+
+```js filename="Example code"
+Jevil.setViewPagerSelectedIndex('vp_list', 1)
+```
+
+
+
+
+## Jevil.textChanged
+
+Input이 변경될때 호출된다호출된다
+
+원 블록 함수
+onResume이나 비동기로 호출요망
+
+- Jevil.textChanged(nodeName, callback)
+
+parameter
+
+- nodeName `string` `require` Input 노드 명
+- callback `function` `require` 
+    - text `string` `require` 변경되는 텍스트
+
+
+```js filename="Example code"
+Jevil.textChanged('input1', function(text) {
+  //...
+})
+```
+
+
+
+
+## Jevil.textFocusChanged
+
+Input에 포커스가 변경 될때 호출된다
+
+원 블록 함수
+onResume이나 비동기로 호출요망
+
+- Jevil.textFocusChanged(nodeName, callback)
+
+parameter
+
+- nodeName `string` `require` 노드명
+- callback `function` `require` 
+    - focus `boolean` `require` 포커스 설정 여부
+
+
+```js filename="Example code"
+Jevil.textFocusChanged('input1', function(focus) {
+  //...
+})
+```
+
+
+
+
+## Jevil.timer
+
+Timer 블록을 특정 초부터 다시 시작하게 한다
+
+- Jevil.timer(node, sec)
+
+parameter
+
+- node `string` `require` Timer Node 이름
+- sec `int` `require` 다시 시작할 초
+
+
+```js filename="Example code"
+Jevil.timer('remain', 60*5)
+```
+
+
+
+
+## Jevil.update
+
+Update blocks in screen
+Javascript variable data affects this
+
+- Jevil.update(null)
+
+parameter
+null
+
+
+```js filename="Example code"
+data.text = 'Hello'
+Jevil.update()
+```
+
+
+
+
+## Jevil.videoViewAutoPlay
+
+눈에 보이고 autoplay설정된VideoView중 하나를 autoplay하고 나머지는 pause한다
+
+- Jevil.videoViewAutoPlay(null)
+
+parameter
+null
+
+
+```js filename="Example code"
+Jevil.videoViewAutoPlay()
+```
+
+
+## Jevil.videoCallback
+
+VideoView callback으로 현재는 ready만 된다
+
+- Jevil.videoCallback(node, event, function)
+
+parameter
+
+- node `string` `require` VideoView의 노드 명
+- event `string` `require` 콜백을 받을 이벤트
+ [click|map_click|camera|drag_start|drag_end]
+- callback `function` `require` 콜백 함수
+    - res
+        - 아직없음
+
+
+```js filename="Example code"
+Jevil.videoCallback('video', 'ready', function(res) {
+    Jevil.update()
+})
+  
+```
+
+

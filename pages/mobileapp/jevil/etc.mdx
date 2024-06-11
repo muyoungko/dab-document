@@ -1,0 +1,126 @@
+
+## Jevil.log
+
+로그를 남긴다
+
+- Jevil.log(log_text, json)
+
+parameter
+
+- log_text `string` `require` 로그 제목
+- json `json` `require` 로그 json
+
+
+```js filename="Example code"
+Jevil.log('send', {body:'text'})
+```
+
+
+
+
+## Jevil.removeTimer
+
+타이머를 제거한다
+타이머가 두개이상 일경우 아이폰 안드로이드 조금 동작이 다름
+
+- Jevil.removeTimer(key)
+
+parameter
+
+- key `string` `require` 타이머 키
+
+
+```js filename="Example code"
+Jevil.removeTimer('key')
+
+```
+
+
+
+
+## Jevil.setTimer
+
+함수를 예약한다
+몇 초 뒤 특정 함수를 실행한다
+
+- Jevil.setTimer(key, sec, callback)
+
+parameter
+
+- key `string` `require` 예약된 함수키 이 키로 덮어쓰면 예전 함수를 사라진다
+- sec `int` `require` 밀리 세컨드
+- callback `function` `require` 
+
+
+```js filename="Example code"
+Jevil.setTimer('key', 5, function(){
+      Jevil.finish()
+})
+
+```
+
+
+
+
+## Jevil.sha256ToHash
+
+Jevil.sha256ToHash 문자열로 변환한다
+
+- Jevil.sha256ToHash(text)
+
+parameter
+
+- text `string` `require` 인코딩 할 문자열
+
+
+```js filename="Example code"
+let a = Jevil.sha256ToHash('password1234')
+//a == 'b9c950640e1b3740e98acb93e669c65766f6670dd1609ba91ff41052ba48c6f3'
+```
+
+
+
+
+## Jevil.toJpg
+
+해당 뷰를 이미지로 컨버팅하여 포토 앨범에 저장한다
+
+- Jevil.toJpg(nodeName, callback)
+
+parameter
+
+- nodeName `string` `require` 뷰 이름
+- callback `function` `require` 
+
+
+```js filename="Example code"
+function save(){
+  Jevil.toJpg('certificate', function(res) {
+    if(res && res.r) {
+      Jevil.alert('포토 앨범에 저장되었습니다')
+    }
+  })
+}
+```
+
+
+## Jevil.review
+
+앱에서 리뷰를 요청한다
+적절한 타이밍에 알아서 리뷰가 호출된다
+이 함수를 호출하면 리뷰창이 뜰수도 있고 안뜰수도있다
+특정 조건이 맞아야만 뜬다
+
+- Jevil.review()
+  * 앱 실행 5번째에 뜸, 그리고 영원히 안뜸, 1일 최대 1회로 계산됨, 이함수가 호출될때마다 1회로 침
+  * 애플은 1년 최대3회 제약있음, 리뷰를 남기면 안뜸
+  * 리뷰를 남기면 안뜸
+
+
+
+```js filename="Example code"
+Jevil.review()
+```
+
+
+

@@ -14,7 +14,7 @@ parameter
 
 Example code
 
-```javascript
+```js filename="Example code"
 let urls = ['/path/1', '/path/2']
   Jevil.startLoading()
   Jevil.getManyThen(urls, function(results){
@@ -42,15 +42,15 @@ If 'x-access-token' variable exists, it automatically added to header
 
 - Jevil.getThen(url, callback)
 
-#### parameter
+parameter
 
 - url `string` `require` http url to call or path
 - callback `function` `require` 
     - res `string` `require` res is json response body
 if network failed, res is null
 
-#### Example code
-```javascript
+
+```js filename="Example code"
 Jevil.getThen('http://my.api.server.com/myapi?mykey='+'whatever', function(response) => {
     ...
 })
@@ -74,7 +74,7 @@ RFC 7231 §4.3.1 states that a body "has no defined semantics", but that's not t
 
 - Jevil.http(method, path, header, body, callback)
 
-#### parameter
+parameter
 
 - method `string` `require` get post put delete 등 http 메소드
 - path `string` `require` path
@@ -83,8 +83,8 @@ RFC 7231 §4.3.1 states that a body "has no defined semantics", but that's not t
 - callback `function` `require` 
     - res `json` `require` 응답
 
-#### Example code
-```javascript
+
+```js filename="Example code"
 Jevil.http('get', '/admin/ils-match', {}, {
     name : 'atr001',
     phone : '123456', 
@@ -108,15 +108,15 @@ If 'x-access-token' variable exists, it automatically added to header
 
 - Jevil.postThen(url, json, callback)
 
-#### parameter
+parameter
 
 - url `string` `require` http url or path
 - json `json` `require` 
 - callback `function` `require` 
     - res `json` `require` response body
 
-#### Example code
-```javascript
+
+```js filename="Example code"
 Jevil.postThen('http://my.api.server.com/myapi', {mykey:'whatever'}, function(response) => {
     ...
 })
@@ -141,7 +141,7 @@ If 'x-access-token' variable exists, it automatically added to header
 
 - Jevil.postThenWithHeader(url, json, json, callback)
 
-#### parameter
+parameter
 
 - url `string` `require` http url or path
 - json `json` `require` 
@@ -149,8 +149,8 @@ If 'x-access-token' variable exists, it automatically added to header
 - callback `function` `require` 
     - res `json` `require` res is json response body
 
-#### Example code
-```javascript
+
+```js filename="Example code"
 Jevil.postThenWithHeader('/myapi', {header1:'h1'}, {mykey:'whatever'}, function(response) {
     ...
 })
@@ -171,14 +171,14 @@ If 'x-access-token' variable exists, it automatically added to header
 
 - Jevil.putThen(url, json, callback)
 
-#### parameter
+parameter
 
 - url `string` `require` url
 - json `json` `require` json
 - callback `function` `require` 
 
-#### Example code
-```javascript
+
+```js filename="Example code"
 Jevil.putThen('http://my.api.server.com/myapi', {mykey:'whatever'}, function(response) => {
     ...
 })
@@ -198,7 +198,7 @@ URL을 다운받아 앱의 문서 폴더에 저장한다
 
 - Jevil.saveFileFromUrl(param, callback)
 
-#### parameter
+parameter
 
 - param `json` `require` 옵션 param
     - url `string` `require` 온라인 파일 URL
@@ -210,8 +210,8 @@ URL을 다운받아 앱의 문서 폴더에 저장한다
         - dest `string` 저장된 파일 path
         - size `Integer` 파일 사이즈
 
-#### Example code
-```javascript
+
+```js filename="Example code"
 Jevil.saveFileFromUrl({url:res.floor.map_url, destFileName:'map_'+data.id+'.jpg'}, function(a) {
           if(a && a.r) {
             Jevil.save(key_my_map_version, res.floor.map_version)
@@ -230,11 +230,11 @@ If logined, it also sends x-access-token
 
 - Jevil.sendPushKeyWithDevilServer(null)
 
-#### parameter
+parameter
 null
 
-#### Example code
-```javascript
+
+```js filename="Example code"
 Jevil.sendPushKeyWithDevilServer()
 ```
 
@@ -253,14 +253,14 @@ uploadS3Secure를 동일한 방법으로 사용하면, public이아닌 private�
 
 - Jevil.uploadS3(files, callback)
 
-#### parameter
+parameter
 
 - files `array` `require` local file path
 - callback `function` `require` 
     - result `json` `require` s3 upload result
 
-#### Example code
-```javascript
+
+```js filename="Example code"
 //이 함수를 사용하려면 로그인 되어있어야함
 Jevil.uploadS3(['/file/path1', '/file/path2'], function(result) {
     ...

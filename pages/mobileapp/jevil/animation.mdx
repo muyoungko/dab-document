@@ -1,0 +1,38 @@
+
+## JevilAnimation.start
+
+Start Animation 
+
+- JevilAnimation.start(nodeName, param)
+
+parameter
+
+- `nodeName` `string` `require` Node to make animate
+- `param` `json` `require` animation option
+    - `type` `string` `require` pulse - Bigger and smaller foerver
+    - `scale` `float` `require` purlse - Scalability for bigger
+
+
+```js filename="Example code"
+JevilAnimation.start('recordIcon', {type:'pulse', scale:1.3})
+```
+
+
+
+## JevilAnimation.stop
+
+Stop Animation
+
+- JevilAnimation.stop(nodeName)
+
+parameter
+
+- `nodeName` `string` `require` Node to stop animate
+
+
+```js filename="Example code"
+JevilAnimation.stop('recordIcon')
+```
+
+
+
