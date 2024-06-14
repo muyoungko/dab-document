@@ -11,15 +11,15 @@
     "type": "git",
     "url": "git+https://github.com/muyoungko/dab-document.git"
   },
-  "author": "Shu Ding <g@shud.in>",
+  "author": "muyoungko <muyoungko@gmail.com>",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/muyoungko/dab-document/issues"
   },
   "homepage": "https://github.com/muyoungko/dab-document#readme",
   "dependencies": {
-    "next": "^13.0.6",
-    "nextra": "latest",
+    "next": "^14.2.4",
+    "nextra": "^2.13.4",
     "nextra-theme-docs": "latest",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"

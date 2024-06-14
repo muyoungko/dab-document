@@ -23,7 +23,7 @@ const config: DocsThemeConfig = {
         <meta property="og:title" content={'Documentation - Devil App Builder'} />
         <meta
           property="og:description"
-          content={'The next site builder'}
+          content={'Devil App Builder Document'}
         />
       </>
     )
