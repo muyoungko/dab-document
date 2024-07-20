@@ -1,8 +1,8 @@
 {
   "index": "Hello",
   "introduction": "Introduction",
-  "mobileapp": "Mobile App",
-  "api": "API Builder",
+  "mobileapp": "Mobile App Builder",
+  "apibuilder": "API Builder",
   "admin": "Admin Builder",
   "about": {
     "title": "About",
