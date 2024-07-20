@@ -4,7 +4,43 @@ We call it Dynamic API.
 
 This is very easy way to make your online code to api
 
-You can just name path and code. That's it.
+You can just name path and code and click Save button.
+
+That's it.
 
 We provide server, your own database.
 
+
+## URL Prefix
+
+```
+https://dapi.devil-app-builder.com/[your project key]/prod/dapi/[your defined path]
+```
+
+Method is depend you defined
+
+You can set your host in DAB mobile app to following 
+
+```
+https://dapi.devil-app-builder.com/[your project key]/[prod or dev]
+```
+
+make your DAB app to connect between dev and prod
+
+
+and you can call it with your defined path. 
+Don't forget /dapi/ 
+
+```js
+Jevil.getThen('/dapi/[your defined path]', function(res) {
+
+})
+```
+
+Remember that there is no database for only development. 
+Database is same for prod and dev.
+
+We provide dev api code with prod database. 
+Or prod api code with prod database.
+
+Database is always prod
