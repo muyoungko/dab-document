@@ -1,0 +1,145 @@
+
+## Jevil.gyroscopeStart
+
+Start gyroscope detections.
+Android requires permission of `android.permission.HIGH_SAMPLING_RATE_SENSORS`
+for fast frequancy.
+Callback function is regularly called once it started.
+
+- Jevil.gyroscopeStart(option, callback)
+
+parameter
+
+- option.delay `string` 'fast' or 'normal'. dely Default is 'normal'
+- option.interval `int` Interval of callback function while detected gyroscope. Unit is millisecond. Default 1000 ms.
+- callback `function` `require` 
+  - r `boolean` successful of each 
+  - event `String` 'start' or 'collect'. 'start' means that gyroscope detection is successfully started. 
+  - t `String` `collect only` nano seconds timestamp
+  - x `Double` `collect only` x
+  - y `Double` `collect only` y
+  - z `Double` `collect only` z
+
+
+```js filename="Example code"
+Jevil.gyroscopeStart({delay:'fast', interval:200}, function(res) {
+    if(res.event == 'start') {
+        
+    } else if(res.event == 'collect') {
+
+        data.x = res.x
+        data.y = res.y
+        data.z = res.z
+        
+        data.data1.list.push({
+            name : msgap(data.first_t) + 's',
+            x:res.x,
+            y:res.y,
+            z:res.z,
+        })
+        Jevil.update()
+    }
+})      
+```
+
+
+
+
+## Jevil.gyroscopeStop
+
+Stop gyroscope detection
+
+- Jevil.gyroscopeStop()
+
+
+```js filename="Example code"
+Jevil.gyroscopeStop()
+```
+
+
+
+
+## Jevil.gyroscopeData
+
+Get Gyroscope Data
+
+- Jevil.gyroscopeData(param)
+
+parameter
+- param `json`
+  - last_ms `int` Millisecond range from now to collect. If delay is 'fast', data could be too extremly large to receive javascript. In this case, use Jevil.gyroscopeZipData function. Default is 10000
+  - sample `int` sampling count to collect from range
+
+return 
+- `array` return value of collected data
+  - t `String` nano seconds timestamp
+  - x `Double` x
+  - y `Double` y
+  - z `Double` z
+
+
+```js filename="Example code"
+const list = Jevil.gyroscopeZipData({
+  last_ms:10000, smaple:10000,
+})
+```
+
+
+
+
+## Jevil.gyroscopeZipData
+
+Get Gyroscope Data with zipeed byte and base64 string encoding
+When delay is fast data is extremly big.
+
+- Jevil.gyroscopeZipData(param, callback)
+
+parameter
+ - none
+
+callback
+- `array` return value of collected data
+- value `String` base64 zipped data. byte is 
+```java filename="Android Encoding code"
+ByteBuffer byteBuffer = ByteBuffer.allocate(byte_len);
+for(Value each : collectedGyroscopeDataList) {
+  byteBuffer.putLong(each.t);
+  byteBuffer.putFloat(each.x);
+  byteBuffer.putFloat(each.y);
+  byteBuffer.putFloat(each.z);
+}
+byte[] compress = ZipUtil.compress(bytes);
+String value = Base64.encodeToString(compress, Base64.DEFAULT);
+```
+
+
+```js filename="Example code"
+Jevil.gyroscopeZipData({}, function(res) {
+    res.value // this is base64 zipped big data
+})
+```
+
+```js filename="Node js decoding code"
+// get value from client
+let buffer = Buffer.from(data.value, 'base64');
+let compress_byte_len = buffer.length
+
+//zip decompress
+buffer = await decompress(buffer);
+let byte_len = buffer.length
+
+let offset = 0
+let list = []
+while(offset + 20 < buffer.length){
+    list.push({
+        t: buffer.readBigInt64BE(offset) + '',
+        x: buffer.readFloatBE(offset+8),
+        y: buffer.readFloatBE(offset+12),
+        z: buffer.readFloatBE(offset+16),
+    })
+    offset += 20
+}
+```
+
+
+
