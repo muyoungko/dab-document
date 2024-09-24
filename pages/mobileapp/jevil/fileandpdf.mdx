@@ -1,0 +1,30 @@
+## Jevil.fileChooser
+
+Choose file 
+
+- Jevil.fileChooser(param, callback)
+
+parameter
+- param `json`
+  - mime `string` comma seperated mime strings
+
+- callback `function` `require` 
+  - r `boolean` success
+  - file `String` absolute file path
+
+```js filename="Example code"
+Jevil.fileChooser({mime:'application/pdf,image/*'}, function(res){
+  if(res.r) {
+    let pdfFile = res.file
+
+    //Do someThing with file 
+    
+    Jevil.pdfInfo(pdfFile, function(res) {
+      //...
+    })
+  } else {
+    Jevil.alert(res.msg)
+  }
+})
+```
+
