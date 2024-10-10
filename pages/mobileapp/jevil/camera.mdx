@@ -198,3 +198,52 @@ Jevil.galleryList({}, function(res) {
 
 
 
+## Jevil.galleryList
+
+Camera 
+
+- Jevil.cameraSystem(option, callback)
+
+parameter
+  - startVideo `boolean`  Camera starts with video record. Default false
+  - startFront `boolean`  Camera starts with front lence(self-camera). Default true
+  - startFlash `boolean`  Camera starts with flash on. Default true
+  - hasPicture `boolean`  Camera can take picture. Default true
+  - hasVideo `boolean`  Camera can take video. Default false
+  - hasGallery `boolean`  Camera can take video or picture from gallery. Default true
+  - minSec `int`  If it has video, min sec for recording. Default 3
+  - maxSec `boolean`  If it has video, max sec for recording. Default 10
+  - ratio `float`  Height comparing width. Default 1.0
+  - hasFrontBack `boolean` has front back button
+  - hasGps `boolean` gps in result picture
+  - original `boolean` ignore ratio, quility down
+- callback `function` `require` 
+  - result `json`
+    - r `boolean` Complete or cancel
+    - type `String` content type [image|video] 
+    - image `String` local file path of image jpeg
+    - preview `String` local file path of video preview jpeg
+    - video `String` local file path of video video mp4
+    - lat `Double` gps latitude (gps : true)
+    - lng `Double` gps longtitude (gps : true)
+
+
+```js filename="Example code"
+Jevil.cameraSystem({
+    multi:true,  
+    rate:0.8,
+    showFrame : true,
+    hasPicture : true,
+    hasVideo : false,
+  },
+  function(result){
+    result.list.map(m=>{
+      max ++
+      m.id = max
+      m.image_url = m.image
+      pin_detail.album_list.push(m)
+    })
+})
+```
+
+

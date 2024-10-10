@@ -14,6 +14,7 @@
     "language":"Language",
     "location":"Location",
     "media":"Media",
+    "mqtt":"Mqtt",
     "network":"Network",
     "nfc":"NFC",
     "outlink":"Outlink",
