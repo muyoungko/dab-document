@@ -28,6 +28,7 @@
     "web":"Web",
     "jevillogin":"JevilLogin",
     "jevilads":"JevilAds",
+    "jevilbill":"JevilBill",
     "jeviltoss":"JevilToss",
     "jevilwebrtc":"JevilWebRtc"
 }
