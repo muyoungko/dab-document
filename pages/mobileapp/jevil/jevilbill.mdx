@@ -51,13 +51,34 @@ function loadSubscribeInfo() {
                 title: 'Greate Member Ship',
                 desc: 'No Advertise banner',
                 price: '2000',
-                price_text: '$2,000',
+                price_text: '₩2,000',
+                currency: 'KRW',
                 additional_info: {
-                    text:'Free for 15 days',
+                    text:'Free 15일',
                     list: [
                         {
-
-                        }
+                          offerId:'freetrial',
+                          formattedPrice:'Free',
+                          billingPeriod:'P2W1D',
+                          priceAmountMicros:0,
+                          priceCurrencyCode:'KRW',
+                          date:15,
+                        },
+                        {
+                          offerId:'freetrial',
+                          formattedPrice:'₩2,000',
+                          billingPeriod:'P1M',
+                          priceAmountMicros:2000000000,
+                          priceCurrencyCode:'KRW'
+                          date:30,
+                        }, 
+                        {
+                          formattedPrice:'₩2,000',
+                          billingPeriod:'P1M',
+                          priceAmountMicros:2000000000,
+                          priceCurrencyCode:'KRW'
+                          date:30,
+                        }, 
                     ]
                 }
             }
