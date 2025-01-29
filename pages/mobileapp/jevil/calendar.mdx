@@ -24,11 +24,12 @@ This careate array for block rule calendar
 ```
 
 #### Auto generated Block rule for Calendar
- - `node` calendar_item `condition` default
+ - `node` calendar_item_select `condition` selected == true
  - `node` calendar_item_today `condition` today == true
  - `node` calendar_item_sun `condition` day == 0
  - `node` calendar_item_sat `condition` day == 6
- - `node` calendar_item_select `condition` selected == true
+ - `node` calendar_item `condition` default
+ 
 
 
 ```js filename="Jevil.calendarParse source"
@@ -105,7 +106,7 @@ Jevil.calendarParse = (option, date_map) => {
 
         r.push(m)
     }
-    
+
     return r
 }
 ```
