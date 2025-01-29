@@ -53,14 +53,15 @@ Jevil.calendarParse = (option, date_map) => {
         let month_s = month.substring(4,6)
         start_date = new Date()
         start_date.setFullYear(parseInt(year_s))
-        start_date.setMonth(parseInt(month_s)-1)
         start_date.setDate(1)
+        start_date.setMonth(parseInt(month_s)-1)
     }
     
     let end_date = option.end_date
     if(!end_date) {
         end_date = new Date(start_date.getFullYear(), start_date.getMonth()+1, 0);
     }
+    
     
     let start_offset = option.start_offset;
     if(start_offset == undefined) {
@@ -79,6 +80,9 @@ Jevil.calendarParse = (option, date_map) => {
         today = now.getFullYear() + String(now.getMonth()+1).padStart(2, '0')
          + String(now.getDate()).padStart(2, '0')
     }
+    // let start_date = start_date.getFullYear() + String(start_date.getMonth()+1).padStart(2, '0') 
+    //     + String(start_date.getDate()).padStart(2, '0')
+    //Jevil.log('date_map', date_map)
     
     let len = end_date.getDate() - start_date.getDate()
     for (let i = 0; i <= len; i++) {
@@ -101,7 +105,7 @@ Jevil.calendarParse = (option, date_map) => {
 
         r.push(m)
     }
-
+    
     return r
 }
 ```
