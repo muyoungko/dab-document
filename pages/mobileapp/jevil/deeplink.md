@@ -198,3 +198,28 @@ Jevil.standardUrlProcess('http://host.com/screen/main?tab=2')
 
 
 
+### Standard Url
+
+scheme://[host]/[path]?[query]
+
+#### path 
+scheme://[host]/screen/[screen_name]
+- go to screen_name
+scheme://[host]/replaceScreen/[screen_name]
+- replaceScreen to screen_name
+scheme://[host]/rootScreen/[screen_name]
+- rootScreen to screen_name
+
+#### query
+query to init data when go screen 
+ex ?id=1
+data = {
+  id:1
+}
+
+#### example
+- Jevil.standardUrlProcess('myapp://www.host.com/go/product_detail?id=1')
+
+is same as
+- Jevil.go('product_detail', {id:1})
+
