@@ -23,11 +23,12 @@ const config: DocsThemeConfig = {
     
     return (
       <>
+        <link rel="icon" href="/favicon/favicon.ico" />
         <meta property="og:url" content={url} />
         <meta property="og:title" content={'Documentation - Devil App Builder'} />
         <meta
           property="og:description"
-          content={'Devil App Builder Document'}
+          content={'Devil App Builder Document. Native Appliction Builder. Android and iOS cross platform. Sketch and Figma converting'}
         />
       </>
     )
