@@ -11,7 +11,11 @@ const config: DocsThemeConfig = {
   footer: {
     text: <span>© 2024 Mondayless, Inc</span>,
   },
-  darkMode:true,
+  darkMode: true,
+  i18n: [
+    { locale: 'en', text: 'English' },
+    { locale: 'ko', text: '한국어' }
+  ],
   head: () => {
     const { asPath, defaultLocale, locale } = useRouter()
     const url =
