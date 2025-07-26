@@ -1,0 +1,52 @@
+# Sketch to App
+
+We do not support all of Sketch's features. For example, SVG nodes and complex gradients are not supported. However, we do provide workarounds for constructing application UIs.
+
+Most SVG path images should be converted to bitmap image nodes. Our Sketch plugin can assist you with this conversion.
+
+Here are some of the most useful constraints:
+
+## Artboard for Screen
+
+## Size Limit of 10MB
+
+## Text
+
+### Font
+
+Sketch can set font. DAB don't support it.
+
+### Area
+
+### Text color
+
+Sketch has 2 way to set text color 
+
+* direct set text color (rigth pannel > Text > Color) : `secondary priority`
+* fill color (rigth pannel > Fill > Color ) : `first priority`
+
+## Image
+
+### Path or vector image
+`not surppot`
+
+So it should be change to bitmap image. We provide easy way.
+
+* Install Devil App Builder plugin : `Plugins > Devil App Builder > Node to Bitmap`
+
+Then selected node becomes bitmap image. 
+You have to keep original vector to another sketch 
+ 
+
+## Support/Unsupport Summary
+
+| Sketch Feature   | Support | A |
+| :----- | :----: | ----: |
+| path image    |  X   |    |
+| bitmap image | O  |   |
+| text font | X  |   |
+
+
+
+
+

@@ -1,0 +1,207 @@
+## Jevil.bleList
+
+Look up surround bluetooth
+It also request ble authority if not and guide bluetooth on.
+
+- Jevil.bleList(param, callback)
+
+parameter
+
+- param `json` `require` searching option
+  - `sec` `float` `optional` duration(sec) to search. Default is 10 sec
+  - `filter` `array` `optional` filter to search. If filter set, faster to find.
+    - `name` `string` `requir` bluetooth name. exact search.
+
+Callback function is called everytime with new device found
+
+- callback `function` `require` 
+    - res `json` `require` Callback Response
+      ```json filename="response"
+      {
+        r : true,
+        list : [ //all ble device includeing old and new
+          {
+            name : 'bluetoosname'
+            udid :  'abcd' // unique ble udid. MAC Address or UDID
+            status : 'connected' // or 'disconnected'
+          }
+        ],
+        stop : true, //Indicate it is last search or still searching
+      }
+      ```
+
+Following is search surround ble and find
+
+```js filename="Example code"
+  Jevil.startLoading()
+  Jevil.bleList({sec:30, filter:[{
+      name:'Samsung TV',
+  }]}, function(res) {
+    if(res.r && res.list.length > 0) {
+      data.udid = data.ble.udid;
+      if(res.stop)
+        Jevil.stopLoading()
+    }
+  })
+```
+
+
+## Jevil.bleConnect
+
+Connect ble
+
+- Jevil.bleConnect(udid)
+
+parameter
+
+- `udid` `string` `require` ble udid
+
+```js filename="Example code"
+Jevil.bleConnect(thisData.udid)
+```
+
+
+## Jevil.bleCallback
+
+ble callback
+
+- Jevil.bleCallback(command, callback)
+
+parameter
+
+- `command` `string` `require` Callback Event
+
+  | Event   | Description   |
+  | ----- | ------------ |
+  | connected | BLE Connected |
+  | disconnected | BLE disconnected |
+  | notify | BLE(characteristic) sent byte to app |
+
+- `callback` `function` `require` each callback function has each response structure
+
+```js filename="Example code"
+Jevil.bleCallback('connected', function(res){
+  Jevil.toast('connected ' + res.udid)
+})
+
+Jevil.bleCallback('disconnected', function(res){
+  Jevil.toast('disconnected ' + res.udid)
+})
+
+Jevil.bleCallback('notify', function(res){
+  Jevil.toast('notify ' + res.udid + ' / ' + res.hex + ' / ' + res.text + ' / ' + res.characteristic)
+  //text example '616161' it means hexstring value, 616161 means 0x61 0x61 0x61 also means 'aaa' in string
+  
+})
+```
+
+
+
+
+## Jevil.bleDisconnect
+
+Disconnect ble
+
+- Jevil.bleDisconnect(udid)
+
+parameter
+
+- `udid` `string` `require` Ble udid
+
+```js filename="Example code"
+Jevil.bleDisconnect(udid)
+```
+
+
+
+
+
+## Jevil.bleRead
+
+Read byte from ble
+
+- Jevil.bleRead(param, callback)
+
+parameter
+
+- `param` `json` `require` read 
+    - `udid` `string` `require` ble udid
+    - `service` `string` `require` serivice udid under ble
+    - `characteristic` `string` `require` characteristic udid under service
+- `callback` `function` `require` 
+    ```json filename="response"
+    {
+      r : true,
+      hex : '616161' // '616161' it means hexstring value, 616161 means 0x61 0x61 0x61 also means 'aaa' in string
+      text : 'aaa', // this is optional
+      characteristic : '...', // ble characteristic
+      name : 'ble name',
+    }
+    ```
+
+```js filename="Example code"
+Jevil.bleRead({
+          udid:data.udid, 
+          service:s.udid, 
+          characteristic:c.udid, 
+        }, function(res) {
+          Jevil.stopLoading()
+          Jevil.toast('read')
+        })    
+```
+
+
+
+
+
+## Jevil.bleWrite
+
+Send byte to ble
+
+- Jevil.bleWrite(param, callback)
+
+parameter
+
+- `param` `json` `require` write param
+    - `udid` `string` `require` ble udid
+    - `service` `string` `require` serivice udid under ble
+    - `characteristic` `string` `require` characteristic udid under service
+    - `text` `string` `require` 'aaa' text or hex is required at least one
+    - `hex` `string` `require` '616161' 
+
+- `callback` `function` `require` callback
+    - res `json` `require` 성공 여부 콜백
+
+```js filename="Example code"
+{
+ r: true or false
+}
+```
+
+```js filename="Example code"
+Jevil.bleWrite({
+          udid:ble_udid, 
+          service:service_udid, 
+          characteristic:c_udid, 
+          text:'hello'
+        }, function(res) {
+          Jevil.stopLoading()
+        })    
+```
+
+
+
+
+
+## Jevil.bleRelease
+
+disconnect all the ble and clear all feature from ble
+
+- Jevil.bleRelease()
+
+parameter
+
+```js filename="Example code"
+Jevil.bleRelease()
+```
+

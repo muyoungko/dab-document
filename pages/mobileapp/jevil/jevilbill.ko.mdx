@@ -1,0 +1,163 @@
+
+## JevilBill.requestProduct
+
+Get inapp purchase SKU information
+
+- Jevil.requestProduct(param, callback)
+
+parameter
+
+- param `json` `require`
+    - skus : `array` `require` 
+      Sku String arrays to get information
+    - test : `string` `require` 
+      test result
+    
+- callback `function` `require` 
+    - type `string` `require`  
+    - sku `string` `require`  
+    - title `string` `require`  
+    - desc `string` `require`  
+    - price `string` `require` 
+    - price_text `string` `require`
+    - addtional_info `json` `require` 
+   
+
+```js filename="Example code"
+function loadSubscribeInfo() {
+
+    let sku_item_android = 'item1'
+    let sku_item_ios = 'item1'
+    let sku_item = Jevil.get('OS') == 'iOS' ? sku_item_ios : sku_item_android
+
+    let sku_subscribe_android = 'subscribe1'
+    let sku_subscribe_ios = 'subscribe1'
+    let sku_subscribe = Jevil.get('OS') == 'iOS' ? sku_subscribe_ios : sku_subscribe_android
+
+    Jevil.startLoading()
+    JevilBill.requestProduct({
+        skus: [sku_item, sku_subscribe], test: [
+            {
+                type: 'product',
+                sku: sku_item,
+                title: 'Point 1000',
+                desc: 'You can spend',
+                price: '1000',
+                price_text: '$1,000',
+            },
+            {
+                type: 'subscribe',
+                sku: sku_subscribe,
+                title: 'Greate Member Ship',
+                desc: 'No Advertise banner',
+                price: '2000',
+                price_text: '₩2,000',
+                currency: 'KRW',
+                additional_info: {
+                    text:'Free 15일',
+                    list: [
+                        {
+                          offerId:'freetrial',
+                          formattedPrice:'Free',
+                          billingPeriod:'P2W1D',
+                          priceAmountMicros:0,
+                          priceCurrencyCode:'KRW',
+                          date:15,
+                        },
+                        {
+                          offerId:'freetrial',
+                          formattedPrice:'₩2,000',
+                          billingPeriod:'P1M',
+                          priceAmountMicros:2000000000,
+                          priceCurrencyCode:'KRW'
+                          date:30,
+                        }, 
+                        {
+                          formattedPrice:'₩2,000',
+                          billingPeriod:'P1M',
+                          priceAmountMicros:2000000000,
+                          priceCurrencyCode:'KRW'
+                          date:30,
+                        }, 
+                    ]
+                }
+            }
+        ]
+    }, function (res) {
+        Jevil.stopLoading()
+        data.item = res.list[0]
+        data.subscribe = res.list[1]
+        Jevil.update()
+    })
+}
+  
+```
+
+
+## JevilBill.purchase
+
+purchase 
+
+- Jevil.purchase(param, callback)
+
+parameter
+
+- param `json` `require`
+    - sku : `string` `require` 
+      sku to purchase
+    
+- callback `function` `require` 
+    - r `boolean` `require`  
+    - code `string` `require`  
+    - msg `string` `require`  
+   
+
+```js filename="Example code"
+JevilBill.purchase({sku:sku}, function(res) {
+    Jevil.stopLoading()  
+    if(res.r) {
+      Jevil.alertFinish('Thank you for subscription')
+    } else if(res.code == 'cancel') {
+      
+    } else if(res.msg) {
+      Jevil.alert(res.msg) 
+    } else {
+      Jevil.alert('Unknown Error Occurred') 
+    }
+  })
+  
+```
+
+
+## JevilBill.consume
+
+comsume item not subscription
+
+- Jevil.comsume(param, callback)
+
+parameter
+
+- param `json` `require`
+    - sku : `string` `require` 
+      sku to purchase
+    
+- callback `function` `require` 
+    - r `boolean` `require`  
+    - code `string` `require`  
+    - msg `string` `require`  
+   
+
+```js filename="Example code"
+JevilBill.consume({sku:sku}, function(res) {
+    Jevil.stopLoading()  
+    if(res.r) {
+    } else if(res.code == 'cancel') {
+      
+    } else if(res.msg) {
+      Jevil.alert(res.msg) 
+    } else {
+      Jevil.alert('Unknown Error Occurred') 
+    }
+  })
+  
+```

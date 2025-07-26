@@ -1,0 +1,126 @@
+
+## Jevil.mqttConnect
+
+Make Mqtt Connection
+
+- Jevil.mqttConnect(option, callback)
+
+parameter
+
+- `option` `json` `require` Camera Option
+  - url `string` `require` Mqtt Server url ex)mqtt+ssl://
+  - username `string` `optional` Mqtt Server username if need
+  - password `string` `optional` Mqtt Server password if need
+  - topic `string` `optional` Mqtt Topic to subscribe
+
+- callback `function` `require` 
+  - result `json`
+    - r `boolean` Success or Failure
+
+
+```js filename="Example code"
+Jevil.mqttConnect({
+  url:'mqtt+ssl://b-2e5ca60d-8894-4217-a031-bcbd5902c5bf-1.mq.ap-northeast-2.amazonaws.com:8883'
+  username:'username',
+  password:'password',
+  topic:'my_topic',
+}, function(result){
+  if(result.r) {
+    ...
+  } else {
+    ...
+  }
+})
+```
+
+## Jevil.mqttSubscribe
+subscribe mqtt topic
+
+- Jevil.mqttSubscribe(option, callback)
+
+parameter
+
+- `option` `json` `require` Camera Option
+  - topic `string` `optional` Mqtt Topic to subscribe
+
+- callback `function` `require` 
+  - result `json`
+    - r `boolean` Success or Failure
+
+
+```js filename="Example code"
+Jevil.mqttSubscribe({
+    topic:'my_topic',
+  }, function(result){
+    if(result.r) {
+      ...
+    } else {
+      ...
+    }
+  })
+```
+
+## Jevil.mqttPublish
+publish mqtt 
+
+- Jevil.mqttPublish(option, callback)
+
+parameter
+
+- `option` `json` `require` Camera Option
+  - topic `string` `require` publish
+  - message `string` `require` publish
+
+- callback `function` `require` 
+  - result `json`
+    - r `boolean` Success or Failure
+
+```js filename="Example code"
+Jevil.mqttPublish({
+    topic:'my_topic',
+    message:'text',
+  }, function(result){
+    if(result.r) {
+      ...
+    } else {
+      ...
+    }
+  })
+```
+
+## Jevil.mqttListener
+
+listen mqtt event(message, disconnect)
+
+- Jevil.mqttListener(callback)
+
+parameter
+- callback `function` `require` 
+    - type `string` `require` 'message' or 'disconnect'
+    - topic `string` only when type is message 
+    - message `string` only when type is message
+
+
+```js filename="Example code"
+Jevil.mqttListener(function(result){
+    if(result.type == 'message') {
+      
+    } else if(result.type == 'disconnect') {
+
+    }
+})
+```
+
+
+## Jevil.mqttRelease
+
+Mqtt disconnect
+
+- Jevil.mqttRelease()
+
+```js filename="Example code"
+Jevil.mqttRelease()
+```
+
+
+

@@ -1,0 +1,41 @@
+## API host of mobile
+
+You can set common host for mobile app to communicate with your own api server.
+Also we provide full url.
+You can set host and web host in [console > project > setting](https://www.devil-app-builder.com/project/setting)
+
+For example
+- There is Jevil.getThen function for http rest api
+
+```js filename="HTTP Get with pre-defined api host"
+
+//This actually call [api host] + /api/product/list
+Jevil.getThen('/member/hello', function(res) {
+    ...
+})
+```
+
+
+- Also you can call 
+
+```js filename="HTTP Get with full url"
+
+Jevil.getThen('https://api.mondayless.co.kr/member/hello', function(res) {
+    ...
+})
+```
+
+
+Following functions use pre-defined api host.
+- Jevil.getThen()
+- Jevil.postThen()
+- Jevil.sendPushKeyWithDevilServer()
+- etc
+
+
+## Use while development
+
+- Devil Web Console > Setting > Development 
+    - add your local server like 192.168.0.xxx
+- Devil App > Host Select
+    - select 192.168.0.xxx

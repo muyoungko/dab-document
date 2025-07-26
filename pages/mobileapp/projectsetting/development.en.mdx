@@ -1,0 +1,36 @@
+## Host and Web Host
+
+The app's API host is usually one, which is set commonly in the app and when using API in the app, only the path is attached
+
+```javascript
+Jevil.getThe('/api/product/list', function(res) {
+    ...
+})
+```
+
+The above code can be called variously according to the host setting as follows
+ - Examples 
+    - https://api.myservice.com/api/product/list
+    - https://dev.myservice.com/api/product/list
+    - http://localhost:8080/api/product/list
+
+
+The way to set the host is to set API Host and Web Host in DAB Console > Project > Setting as follows.
+
+- API Host is automatically set in the following http-related functions
+    - Jevil.getThen()
+    - Jevil.postThen()
+    - Jevil.sendPushKeyWithDevilServer()
+    - etc
+- Web Host is automatically set in WebView block rule
+
+## Host For Development
+
+To develop the server and app, the app must look at my development server.
+You can set development API Host and Web Host in DAB Console > Project > Setting > Development.
+
+<img src="https://github.com/mondayless/devil_document/blob/master/docs/_images/host_select_dev.png?raw=true" width="80%" />
+
+When you enter a development host, it appears to everyone in the DAB App as follows, and you can select the appropriate development server for each person through host settings
+
+<img src="https://github.com/mondayless/devil_document/blob/master/docs/_images/host_select_app.png?raw=true" width="30%" /> 
