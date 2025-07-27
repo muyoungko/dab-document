@@ -122,11 +122,24 @@ data.name1 = 'Jason Ko'
 
 4. DAB 앱에서 **Devil 아이콘** 클릭하여 리로드한 후 해당 내용 적용 확인
 
-### 네트워크 API 처리
-- 외부 API 연동 및 데이터 처리
+## 🌐 네트워크(HTTP)로 데이터 처리
 
-### 리스트 처리
-- 동적 리스트 표시 및 스크롤 처리
+1. main 의 javascdript에 다음 코드 추가
+```js filename="HTTP Get with pre-defined api host"
+
+//This actually call [api host] + /api/product/list
+Jevil.getThen('https://console-api.deavil.com/member/hello', function(res) {
+    data.name1 = res.hello
+    Jevil.update() // 이 코드는 현재 data상태를 앱 화면에 반영한다
+})
+```
+
+``` json filename="https://console-api.deavil.com/member/hello"
+{
+    "hello": "member hello"
+}
+```
+2. DAB앱에서 아이콘 클릭하여 바뀐 내용을 확인
 
 ## ✅ 완료!
 
