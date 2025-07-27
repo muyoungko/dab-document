@@ -1,78 +1,80 @@
 # Quick Start
 
-We will do 
- - make sample sketch convert to application and make simple get network 
- - get json data from http network call
- - set text to UI node
+### 준비
+#### DAB 사이트 가입
+ - https://www.devil-app-builder.com 
+#### 스케치 어플리케이션 다운로드
+ - https://www.sketch.com/ 
 
-### Get Sample Sketch
+### 신규 프로젝트 생성
+ - https://www.devil-app-builder.com/project/new
+ ![Quickstart 이미지](/image/project-new.png)
+ - Project Unique Name 란에 적절한 프로젝트 이름 입력
+ - Choose Template > Blank sketch 선택
+ - Create 버튼 클릭
 
-Get sample sketch from https://www.devil-app-builder.com/sketch
- 
-![Hello](/image/quickstart1.png)
+### 템플릿 스캐치 다운로드
+ - 좌측 메뉴에서 APP > Sketch > 다운로드 아이콘 클릭
+ ![Quickstart 이미지](/image/sketch-list.png)
+ - 다운받은 스캐치 열기
+ ![Quickstart 이미지](/image/sketch.png)
 
-- Upload the sample sketch then new project is constructed
 
-### Set Start Screen
+### 스캐치 플러그인 다운로드
 
-You can see 4 screens if you use sample sketch 
-Set the first screen to splash then it become first screen when you start application
+스캐치 플러그인을 다운받고 설치한다. Sketch 를 앱과 동기화하는 데 사용한다
 
-### View with Mobile app
+https://img.deavil.com/plugin/devil_plugin.sketchplugin.zip
 
-You can see the Qr code on the console.
-Watch your First Application with Devil App Builder Viewer
+![Quickstart 이미지](/image/sketch-plugin.png)
 
-### Go to Development IDE console
+Sketch를 동기화하는 버튼은 Plugin > Devil App Builder > Upload Sketch 이며, 단축키를 이용하여 자주 업로드한다
 
- - Select your screen 
+### 첫 화면으로 지정
+- 좌측의 APP > Screen > first 메뉴 클릭
+- Critical Setting에서 Start Screen 체크 후 저장
+![Quickstart 이미지](/image/screen-setting.png)
 
-### Use Http Api
+### DAB 앱에서 확인
+- 휴대폰에서 Devil App Builder 앱 다운로드
+- 같은 아이디로 로그인 후 Start 클릭 
+- 첫화면 확인
 
-put following code on screen javascript. 
-Jevil is library for using native functions. 
-We support javascript only for process data. Almost everythings to do is in Jevil Library. 
-[See reference](/mobileapp/jevil/introduction)
+### 스케치 수정 후 업로드
+- 스캐치의 첫 화면의 디자인을 수정해본다 
+- 플러그인을 이용해 업로드한다
+- 앱의 우측 하단 데빌 아이콘을 클릭하면 동기화한 스캐치로 리로드되며, 이를 통해 스캐치 변경을 확인한다
 
-#### Put code
- ```js filename="screen javascript"
- Jevil.startLoading()
- Jevil.getThen('https://api.mondayless.co.kr/member/hello', function(res) {
-    Jevil.stopLoading()
-    data.text = res.hello
- })
+### 앱 화면 추가
+- 스캐치에서 Frame을 추가한다. 이름은 main으로 한다. 화면사이즈는 375x820을 권장
+![Quickstart 이미지](/image/sketch-main-add.png)
+- 플러그인을 이용해 스캐치 업로드를 한다
+- 좌측 메뉴 > Screen > New Screen 에 Screen Name Main이 추가된 것을 확인하며 
+![Quickstart 이미지](/image/new-screen.png)
+- Create 버튼 클릭하여 신규 화면으로 추가
+
+### 클릭이벤트 적용
+- 좌측 메뉴 > Screen > first 화면으로 이동
+- first 화면에서 화면 터치시 main화면으로 이동하기
+- 화면 중앙에 위차한 Block Rule 목록에서 Click 선택 
+- New Rule 선택후 Node 부분에 "My First App"
+- Click Action에 
+```js filename="Click Action"
+Jevil.go('main')
 ```
-
-- data is reserved variable
-
-Response json
-```json filename="Response"
-{
-  "hello": "member hello"
-}
-```
-
-- Now "member hello" is set to data.text variable
-
-#### Reload code
-
-Click devil icon on mobile application for reload new code
+/ko/mobileapp/jevil/screenmove 참고
+- Add New 클릭
 
 
-### Put json text to UI node 
 
-#### Make block rule
+![Quickstart 이미지](/image/click-mapping.png)
 
-Go to screen set block rule
+### 네트워크 API 처리
+#### 화면에 텍스트 처리
+#### 화면에 텍스트 처리
+### 리스트 스캐치에 준비
+#### 스캐치에 준비
+#### 데이터 준비
+#### 화면에 표시
 
-#### Jevil.update()
-```js {7} filename="screen javascript"
- Jevil.startLoading()
- Jevil.getThen('https://api.mondayless.co.kr/member/hello', function(res) {
-    Jevil.stopLoading()
-    data.text = res.hello
 
-    // add following code
-    Jevil.update() // sync data variable to screen
- })
-```
