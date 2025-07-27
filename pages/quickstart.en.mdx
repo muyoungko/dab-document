@@ -1,78 +1,72 @@
 # Quick Start
 
-We will do 
- - make sample sketch convert to application and make simple get network 
- - get json data from http network call
- - set text to UI node
+### Preparation
+- Only Mac OS X supported
+- Sign up for DAB site
+- https://www.devil-app-builder.com 
+- Download Sketch application
+- https://www.sketch.com/ 
 
-### Get Sample Sketch
+### Create New Project
+ - https://www.devil-app-builder.com/project/new
+ ![Quickstart Image](/image/project-new.png)
+ - Enter appropriate project name in Project Unique Name field
+ - Choose Template > Blank sketch
+ - Click Create button
 
-Get sample sketch from https://www.devil-app-builder.com/sketch
- 
-![Hello](/image/quickstart1.png)
+### Download Template Sketch
+ - Click download icon in left menu APP > Sketch
+ ![Quickstart Image](/image/sketch-list.png)
+ - Open downloaded sketch
+ ![Quickstart Image](/image/sketch.png)
 
-- Upload the sample sketch then new project is constructed
 
-### Set Start Screen
+### Download Sketch Plugin
 
-You can see 4 screens if you use sample sketch 
-Set the first screen to splash then it become first screen when you start application
+Download and install the Sketch plugin. It is used to synchronize Sketch with the app
 
-### View with Mobile app
+https://img.deavil.com/plugin/devil_plugin.sketchplugin.zip
 
-You can see the Qr code on the console.
-Watch your First Application with Devil App Builder Viewer
+![Quickstart Image](/image/sketch-plugin.png)
 
-### Go to Development IDE console
+The button to synchronize Sketch is Plugin > Devil App Builder > Upload Sketch, and use shortcuts to upload frequently
 
- - Select your screen 
+### Set as First Screen
+- Click APP > Screen > first menu on the left
+- Check Start Screen in Critical Setting and save
+![Quickstart Image](/image/screen-setting.png)
 
-### Use Http Api
+### Verify in DAB App
+- Download Devil App Builder app on your phone
+- Login with same ID and click Start
+- Check first screen
 
-put following code on screen javascript. 
-Jevil is library for using native functions. 
-We support javascript only for process data. Almost everythings to do is in Jevil Library. 
-[See reference](/mobileapp/jevil/introduction)
+### Modify and Upload Sketch
+- Modify the design of the first screen in sketch
+- Upload using the plugin
+- Click the devil icon in the bottom right of the app to reload with synchronized sketch, and verify sketch changes through this
 
-#### Put code
- ```js filename="screen javascript"
- Jevil.startLoading()
- Jevil.getThen('https://api.mondayless.co.kr/member/hello', function(res) {
-    Jevil.stopLoading()
-    data.text = res.hello
- })
+### Add App Screen
+- Add Frame in sketch. Name it main. Recommended screen size is 375x820
+![Quickstart Image](/image/sketch-main-add.png)
+- Upload sketch using the plugin
+- Check that Screen Name Main is added in left menu > Screen > New Screen
+![Quickstart Image](/image/new-screen.png)
+- Click Create button to add as new screen
+
+### Click Handling
+- Go to left menu > Screen > first screen
+- Navigate from first screen to main screen when screen is touched
+- Select Click from Block Rule list located in the center of the screen
+![Quickstart Image](/image/click-mapping.png)
+- Select New Rule then enter "My First App" in Node section
+- In Click Action, add
+```js filename="Click Action"
+Jevil.go('main')
 ```
+- See [/en/mobileapp/jevil/screenmove](/en/mobileapp/jevil/screenmove#jevilgo) for reference
+- Click Add New
 
-- data is reserved variable
-
-Response json
-```json filename="Response"
-{
-  "hello": "member hello"
-}
-```
-
-- Now "member hello" is set to data.text variable
-
-#### Reload code
-
-Click devil icon on mobile application for reload new code
-
-
-### Put json text to UI node 
-
-#### Make block rule
-
-Go to screen set block rule
-
-#### Jevil.update()
-```js {7} filename="screen javascript"
- Jevil.startLoading()
- Jevil.getThen('https://api.mondayless.co.kr/member/hello', function(res) {
-    Jevil.stopLoading()
-    data.text = res.hello
-
-    // add following code
-    Jevil.update() // sync data variable to screen
- })
-```
+### Text Processing
+### Network API Processing
+### List Processing
