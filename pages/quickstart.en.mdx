@@ -1,72 +1,150 @@
 # Quick Start
 
-### Preparation
-- Only Mac OS X supported
-- Sign up for DAB site
-- https://www.devil-app-builder.com 
-- Download Sketch application
-- https://www.sketch.com/ 
+Create your first mobile app with Devil App Builder (DAB)!
 
-### Create New Project
- - https://www.devil-app-builder.com/project/new
- ![Quickstart Image](/image/project-new.png)
- - Enter appropriate project name in Project Unique Name field
- - Choose Template > Blank sketch
- - Click Create button
+## 📋 Preparation
 
-### Download Template Sketch
- - Click download icon in left menu APP > Sketch
- ![Quickstart Image](/image/sketch-list.png)
- - Open downloaded sketch
- ![Quickstart Image](/image/sketch.png)
+### System Requirements
+- **Operating System**: Only Mac OS X supported
 
+### Required Software
+- **DAB Account**: Sign up at [Devil App Builder](https://www.devil-app-builder.com)
+- **Sketch App**: Download from [Sketch official site](https://www.sketch.com/)
 
-### Download Sketch Plugin
+## 🚀 Create New Project
 
-Download and install the Sketch plugin. It is used to synchronize Sketch with the app
+1. Go to the [project creation page](https://www.devil-app-builder.com/project/new)
+2. Enter an appropriate project name in the **Project Unique Name** field
+3. Select **Choose Template** > **Blank sketch**
+   `Start with template sketch`
+4. Click the **Create** button
 
-https://img.deavil.com/plugin/devil_plugin.sketchplugin.zip
+![Project Creation Screen](/image/project-new.png)
 
-![Quickstart Image](/image/sketch-plugin.png)
+> 💡 **Tip**: Project names can only use English letters, numbers, and hyphens (-).
 
-The button to synchronize Sketch is Plugin > Devil App Builder > Upload Sketch, and use shortcuts to upload frequently
+## 📱 Download Template Sketch
 
-### Set as First Screen
-- Click APP > Screen > first menu on the left
-- Check Start Screen in Critical Setting and save
-![Quickstart Image](/image/screen-setting.png)
+1. Click the download icon in **APP > Sketch** from the left menu
+2. Open the downloaded `.sketch` file with Sketch app
 
-### Verify in DAB App
-- Download Devil App Builder app on your phone
-- Login with same ID and click Start
-- Check first screen
+![Sketch List Screen](/image/sketch-list.png)
+![Open Sketch File](/image/sketch.png)
 
-### Modify and Upload Sketch
-- Modify the design of the first screen in sketch
-- Upload using the plugin
-- Click the devil icon in the bottom right of the app to reload with synchronized sketch, and verify sketch changes through this
+## 🔌 Download Sketch Plugin
 
-### Add App Screen
-- Add Frame in sketch. Name it main. Recommended screen size is 375x820
-![Quickstart Image](/image/sketch-main-add.png)
-- Upload sketch using the plugin
-- Check that Screen Name Main is added in left menu > Screen > New Screen
-![Quickstart Image](/image/new-screen.png)
-- Click Create button to add as new screen
+Install the plugin that connects Devil App Builder with Sketch.
 
-### Click Handling
-- Go to left menu > Screen > first screen
-- Navigate from first screen to main screen when screen is touched
-- Select Click from Block Rule list located in the center of the screen
-![Quickstart Image](/image/click-mapping.png)
-- Select New Rule then enter "My First App" in Node section
-- In Click Action, add
+### Plugin Installation
+1. [Download Devil Plugin](https://img.deavil.com/plugin/devil_plugin.sketchplugin.zip)
+2. Double-click the downloaded `.sketchplugin` file to install
+3. Restart Sketch app
+
+![Plugin Installation](/image/sketch-plugin.png)
+
+### Plugin Usage
+- **Menu**: `Plugin > Devil App Builder > Upload Sketch`
+- **Shortcut**: Recommended to set up frequently used shortcuts
+- **Upload**: After modifying the sketch, upload via plugin to immediately reflect in the app
+
+## 🎯 Set as First Screen
+
+1. Click **APP > Screen > first** from the left menu
+2. Check **Start Screen** in **Critical Setting** and save
+
+![Start Screen Setting](/image/screen-setting.png)
+
+> ⚠️ **Important**: If Start Screen is not set, the app will not run.
+
+## 📲 Check in DAB App
+
+1. Download **Devil App Builder** app on your phone
+2. Log in with the same account and click **Start** in the corresponding project
+3. Check the first screen
+
+### App Synchronization Check
+- Click the **Devil icon** in the bottom right of the app to reload with the latest sketch
+- After modifying the sketch, upload via plugin to immediately check in the app
+
+## ➕ Add App Screen
+
+### Create New Screen in Sketch
+1. Add a **Frame** in Sketch. Name it `main`
+2. **Screen Size**: Recommended `375x820` (iPhone 12/13/14 standard)
+3. Upload the sketch using the plugin
+
+![Add New Screen](/image/sketch-main-add.png)
+
+### Register Screen in DAB
+1. Check that **Screen Name Main** is added in **Screen > New Screen** from the left menu
+2. Click **Create** button to add as a new screen
+
+![Register New Screen](/image/new-screen.png)
+
+## 🖱️ Click Handling
+
+### Implement Screen Navigation
+1. Go to **Screen > first** from the left menu
+2. Navigate from **first** screen to **main** screen when screen is touched
+3. Select **Click** from the **Block Rule** list located in the center of the screen
+4. Select **New Rule** and enter `"My First App"` in the **Node** section
+5. Add the following code to **Click Action**:
+
 ```js filename="Click Action"
 Jevil.go('main')
 ```
-- See [/en/mobileapp/jevil/screenmove](/en/mobileapp/jevil/screenmove#jevilgo) for reference
-- Click Add New
 
-### Text Processing
-### Network API Processing
-### List Processing
+6. Click **Add New**
+
+![Click Event Setting](/image/click-mapping.png)
+
+> 📚 **Reference**: For more detailed screen navigation methods, check the [Jevil.go documentation](/en/mobileapp/jevil/screenmove#jevilgo).
+
+## 📝 Text Processing
+
+1. Add a "myname" text node to the sketch and upload
+
+![Add Text Node](/image/myname-text.png)
+
+2. Go to **APP > Screen > main** and enter the following code in **Javascript Editor**:
+
+```js filename="Javascript"
+data.name1 = 'Jason Ko'
+```
+
+> 💡 **Note**: `data` variable is a reserved word.
+
+3. Add a "Text Mapping" block rule to connect `data.name1` with the `myname` node:
+   - **Node**: `"myname"`
+   - **Data Json Path**: `name1`
+
+> 📝 **Explanation**: `name1` refers to `data.name1`, and the `data` variable is built-in and declared at the Screen level.
+
+4. Click the **Devil icon** in the DAB app to reload and check that the content is applied
+
+## 🌐 Network (HTTP) Data Processing
+
+1. Add the following code to main's javascript
+```js filename="HTTP Get with pre-defined api host"
+
+//This actually call [api host] + /api/product/list
+Jevil.getThen('https://console-api.deavil.com/member/hello', function(res) {
+    data.name1 = res.hello
+    Jevil.update() // This code reflects the current data state to the app screen
+})
+```
+
+``` json filename="https://console-api.deavil.com/member/hello"
+{
+    "hello": "member hello"
+}
+```
+2. Click the icon in the DAB app to check the changed content
+
+## ✅ Complete!
+
+Congratulations! Your basic Devil App Builder app is complete.
+
+### Next Steps
+- Go to [Mobile App Development Guide](/en/mobileapp/introduction) for deeper learning
+- Implement advanced features through [Jevil API Documentation](/en/mobileapp/jevil/introduction)
