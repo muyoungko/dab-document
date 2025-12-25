@@ -1,0 +1,44 @@
+## Configuration
+
+Upload the Firebase JSON file in Project > Setting > Basic Information > Push Notification.
+
+## Sending Notifications
+
+Call the built-in Devil library as follows:
+
+Send Push to Single Target
+```js filename="Send Push"
+Devil.sendPush({
+    title:'notification title', 
+    body:'description', 
+    token:'fcm token', 
+    url:'link', 
+    dev, 
+}).then(res=>{
+
+})
+```
+
+Send Push to Multiple Targets
+```js filename="Send Push Multiple List"
+Devil.sendPushList({list:{
+    title:'notification title', 
+    body:'description', 
+    token:'fcm token', 
+    url:'link', 
+    dev, 
+}}).then(res=>{
+
+})
+```
+
+### Parameter Description
+
+| Parameter | Required | Description |
+| :--- | :--- | :--- |
+| title | O | Notification Title |
+| body | O | Notification Body |
+| token | O | Target FCM Token |
+| url | X | URL to open when notification is clicked |
+| dev | X | true: if token is for Devil App, false: if token is for Real App |
+

@@ -2,8 +2,8 @@
   "index": "Hello",
   "quickstart": "Quick Start",
   "mobileapp": "Mobile App Builder",
-  "apibuilder": "API Builder",
-  "admin": "Admin Builder",
+  "apibuilder": "Shared Front",
+  "admin": "Shared Admin",
   "about": {
     "title": "About",
     "type": "page"

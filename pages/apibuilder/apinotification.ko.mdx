@@ -1,0 +1,47 @@
+
+
+## 설정하기
+
+Project > Setting > Basic Information > Push Notification에 파이어 베이스 json파일을 업로드한다
+
+## 알림 보내기
+
+내장된 Devil 라이브러리로 다음과 같이 호출한다
+
+단일 대상 푸시 보내기
+```js filename="Send Push"
+Devil.sendPush({
+    title:'notification title', 
+    body:'description', 
+    token:'fcm token', 
+    url:'link', 
+    dev, 
+}).then(res=>{
+
+})
+```
+
+여러 대상 푸시 보내기
+```js filename="Send Push Multiple List"
+Devil.sendPushList({list:{
+    title:'notification title', 
+    body:'description', 
+    token:'fcm token', 
+    url:'link', 
+    dev, 
+}}).then(res=>{
+
+})
+```
+
+### 파라미터 설명
+
+| 파라미터 | 필수 | 설명 |
+| :--- | :--- | :--- |
+| title | O | 알림 제목 |
+| body | O | 알림 내용 |
+| token | O | 발송 대상의 FCM 토큰 |
+| url | X | 알림 클릭 시 이동할 주소 |
+| dev | X | true : token이 데빌앱일 경우, false - token이 실제 앱일 경우 |
+
+
